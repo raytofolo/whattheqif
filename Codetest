@@ -1,0 +1,54 @@
+import csv
+import argparse
+from datetime import datetime
+
+
+def print_row(date, account, action, symbol, description, status, quantity, price, amount):
+    print(
+        f"{str(date):>6} | "
+        f"{str(account):<6} | "
+        f"{str(action):<22} | "
+        f"{str(symbol):<10} | "
+        f"{str(description):<97} | "
+        f"{str(status):<9} | "
+        f"{str(quantity):<10} | "
+        f"{str(price):<6} | "
+        f"{str(amount):<11} | "      
+    )
+
+
+def csv2qif(input_file='fullfile.csv', output_file='output.qif'):
+    qif_data = ["!Type:Invst"]
+
+    with open(input_file, 'r') as csv_file:
+        rows = list(csv.reader(csv_file, delimiter=';'))
+        print(f"Number of data rows in the csv file: {len(rows) - 1}")
+        rowNr = 1
+        print("")
+        print_row("date", "type", "symbol", "description", "status", "quantity", "price", "amount")
+        print("-"*80)
+        for row in rows[1:]:
+            print_row(rowNr, row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8])
+            rowNr += 1
+            date = datetime.strptime(row[0], "%d/%m/%y")
+            qif_data.extend([
+                f"D{date.strftime('%d/%m/%y')}",
+                f"N{row[2]}"
+                f"Y{row[3]}",
+                f"M{row[4]}",
+                "^"
+            ])
+
+    with open(output_file, 'w') as qif_file:
+        qif_file.write('\n'.join(qif_data))
+    print("\nQIF file created successfully")
+
+
+parser = argparse.ArgumentParser()
+parser.add_argument('files', nargs='*', default=['file.csv', 'output.qif'])
+args = parser.parse_args()
+
+if len(args.files) == 1:
+    csv2qif(input_file=args.files[0])
+else:
+    csv2qif(*args.files)
