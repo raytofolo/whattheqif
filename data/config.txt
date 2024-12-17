@@ -1,0 +1,2 @@
+default_transfer_acct = "Checking at Your Federal Savings Bank"
+default_payee = "Verify transfer account is correct"

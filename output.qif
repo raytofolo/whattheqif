@@ -1,0 +1,120 @@
+
+!Account
+NQUICKEN ACCT 1
+TInvest
+^
+!Type:Invst
+D11/12'2024
+NBuy
+YSPDR Bloomberg 1-3 Month T-Bill ETF
+T$441.00 
+Q4.815
+MSPDR SER TR BLOOMBERG 1-3 MO ETF
+^
+!Account
+NQUICKEN ACCT 2
+TInvest
+^
+!Type:Invst
+D11/12'2024
+NBuy
+YSPDR Bloomberg 1-3 Month T-Bill ETF
+T$872.71 
+Q9.529
+MSPDR SER TR BLOOMBERG 1-3 MO ETF
+^
+!Account
+NQUICKEN ACCT 3
+TInvest
+^
+!Type:Invst
+D11/12'2024
+NBuy
+YSPDR Bloomberg 1-3 Month T-Bill ETF
+T$1,269.09 
+Q13.857
+MSPDR SER TR BLOOMBERG 1-3 MO ETF
+^
+!Account
+NQUICKEN ACCT 1
+TInvest
+^
+!Type:Invst
+D11/14'2024
+NIntInc
+U$0.06 
+T$0.06 
+M.40100%30 DAYS,         $147
+^
+!Account
+NQUICKEN ACCT 2
+TInvest
+^
+!Type:Invst
+D11/14'2024
+NIntInc
+U$0.13 
+T$0.13 
+M.40100%30 DAYS,         $290
+^
+!Account
+NQUICKEN ACCT 3
+TInvest
+^
+!Type:Invst
+D11/14'2024
+NIntInc
+U$0.19
+T$0.19
+M.40100%30 DAYS,         $423
+^
+!Account
+NQUICKEN ACCT 1
+TInvest
+^
+!Type:Invst
+D11/20'2024
+NXIn
+PVerify transfer account is correct
+U$2,000.00 
+T$2,000.00 
+LChecking at Your Federal Savings Bank
+$2,000.00 
+MACH In Xxxx0999              
+^
+!Account
+NQUICKEN ACCT 1
+TInvest
+^
+!Type:Invst
+D12/05'2024
+NDiv
+YSPDR Bloomberg 1-3 Month T-Bill ETF
+U$1.61 
+T$1.61 
+MSPDR SER TR              4.815
+^
+!Account
+NQUICKEN ACCT 2
+TInvest
+^
+!Type:Invst
+D12/05'2024
+NDiv
+YSPDR Bloomberg 1-3 Month T-Bill ETF
+U$3.19 
+T$3.19 
+MSPDR SER TR              9.529
+^
+!Account
+NQUICKEN ACCT 3
+TInvest
+^
+!Type:Invst
+D12/05'2024
+NDiv
+YSPDR Bloomberg 1-3 Month T-Bill ETF
+U$4.64 
+T$4.64 
+MSPDR SER TR             13.857
+^
