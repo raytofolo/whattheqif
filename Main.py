@@ -14,7 +14,7 @@ config_path = os.path.join(relative_path, config_file)
 acct_file ="account_map.txt"
 acct_path = os.path.join(relative_path, acct_file)
 
-securities_file ="security_map.txt"
+securities_file ="securities_map.txt"
 securities_path = os.path.join(relative_path, securities_file)
 
 #declare dictionary of lookup strings used for various values mapped in Quicken
@@ -52,7 +52,7 @@ handle_dividend = ["Div"]
 handle_transfer = ["XIn", "XOut"]
 handle_interest = ["IntInc"]
 handle_shares = ["Buy", "Sell"]
-handle_investment_fees = ["MiscExp"]
+handle_investment_fees = ["Cash"]
 
 #This dictionary is Altruist-specific.  It maps the action codes from the Altruist download to the action codes Quicken understands.
 lookup_action = {
@@ -60,14 +60,12 @@ lookup_action = {
     "Buy": "Buy",
     "Sell": "Sell",
     "Interest": "IntInc",
-    "Fee": "MiscExp",
+    "Fee": "Cash", #12/19: verify this is the correct value in the Altruist download file
     "Deposit": "XIn",
     "Withdrawl": "XOut" 
 }
 
-
-
-#define the columns being read from the input CSV file.  Each col value is listed here.
+#define the columns being read from the input CSV file and format that data for the screen
 def print_row(rowNr, date, account, type, symbol, description, status, quantity, price, amount):
     print(
         f"{str(rowNr):<3} | "
@@ -143,7 +141,7 @@ def csv2qif(input_file='input.csv', output_file='output.qif'):
                     f"{row[8]}",
                     f"M{row[4]}",
                     "^"
-            ])
+                ])
                 
             #handling interest - no quantity, no specific security, posts to cash in brokerage acct    
             if quickenaction in handle_interest:
@@ -177,7 +175,24 @@ def csv2qif(input_file='input.csv', output_file='output.qif'):
                     f"M{row[4]}",
                     #f"C{row[5]}",
                     "^"
-            ])
+                ])
+
+            #handling investment fees - impacts cash in brokerage acct, and posts to an expense category    
+            if quickenaction in handle_investment_fees:
+                qif_data.extend([
+                    f"!Account",
+                    f"N{quickenacct}",
+                    f"TInvest",
+                    f"^",
+                    f"!Type:Invst",
+                    f"D{date.strftime('%m/%d\'%Y')}",
+                    f"N{quickenaction}",
+                    f"U{row[8]}",
+                    f"T{row[8]}",
+                    f"M{variables["invest_mgmt_fees_memo"]}",
+                    f"L{variables["invest_mgmt_fees_category"]}",
+                    "^"
+                ])
 
     #iteratively write the account and transaction data to the output file per the QIF specs
     with open(output_file, 'w') as qif_file:

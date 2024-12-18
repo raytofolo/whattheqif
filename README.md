@@ -26,7 +26,7 @@ There are 3 files that require your specific information for the program to run 
     check/reminder to make sure the account transfer went to the correct place. Make sure you use the quote marks to create the
     correct text output back to Quicken.
 
-    security_map.txt is used to map the investment ticker symbol to the exact name of the security in your Quicken file.
+    securities_map.txt is used to map the investment ticker symbol to the exact name of the security in your Quicken file.
     The way the import process works, the ticker alone will not land the transactions in the correct place, so this 
     overcomes that issue.
 

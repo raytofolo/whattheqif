@@ -118,3 +118,15 @@ U$4.64
 T$4.64 
 MSPDR SER TR             13.857
 ^
+!Account
+NQUICKEN ACCT 1
+TInvest
+^
+!Type:Invst
+D12/07'2024
+NCash
+U-$112.33  
+T-$112.33  
+MManagement Fee Paid
+LInvestment Mgmt Fee
+^

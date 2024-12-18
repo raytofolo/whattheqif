@@ -1,2 +1,4 @@
 default_transfer_acct = "Checking at Your Federal Savings Bank"
 default_payee = "Verify transfer account is correct"
+invest_mgmt_fees_memo = "Management Fee Paid"
+invest_mgmt_fees_category = "Investment Mgmt Fee"
